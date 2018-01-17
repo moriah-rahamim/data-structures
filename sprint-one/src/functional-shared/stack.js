@@ -1,8 +1,25 @@
 var Stack = function() {
-  // Hey! Rewrite in the new style. Your code will wind up looking very similar,
-  // but try not not reference your old code in writing the new style.
+  var someInstance = {};
+
+  var storage = {};
+  var count = 0;
+
+  // assign all methods in stackMethods as methods of someInstance
+  Object.assign(someInstance, stackMethods);
 };
 
-var stackMethods = {};
+var stackMethods = {
+  push: function() {
+
+  },
+
+  pop: function() {
+
+  },
+  
+  size: function() {
+
+  }
+};
 
 

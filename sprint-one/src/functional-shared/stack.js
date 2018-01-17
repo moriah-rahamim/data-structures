@@ -11,13 +11,25 @@ var Stack = function() {
 };
 
 var stackMethods = {
-  push: function() {
+  push: function(item) {
+    // add new item onto top of the stack
+    this.storage[this.count] = item;
+    // increment the count
     this.count++;
   },
 
   pop: function() {
     if (this.count > 0) {
+      // take top item off the stack and hold onto its value
+      let poppedItem = this.storage[this.count - 1];
+      delete this.storage[this.count - 1];
+      // decrement the count
       this.count--;
+      // return the item
+      return poppedItem;
+    } else {
+      // otherwise do nothing
+      return undefined;
     }
   },
   

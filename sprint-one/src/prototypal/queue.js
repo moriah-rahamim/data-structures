@@ -7,11 +7,15 @@
 var Queue = function() {
   // Create someInstance with queueMethods as a prototype
   // (i.e. failed property lookups are delegated to queueMethods)
+  var someInstance = Object.create(queueMethods);
 
   // Create variables for count, start position, and storage for the queue
+  someInstance.count = 0;
+  someInstance.startPosition = 0;
+  someInstance.storage = {};
 
   // return the newly-created queue
-
+  return someInstance;
 };
 
 // Object to hold the methods used by Queue objects
@@ -29,7 +33,7 @@ var queueMethods = {
 
   // return the current size of the queue
   size: function() {
-
+    return 0;
   }
 };
 

@@ -5,7 +5,7 @@ var Queue = function() {
   var storage = {};
   var oldest = 0;
   var newest = 0;
-  var nextKey = Object.keys(storage).length;
+  
 
   // Implement the methods below
 
@@ -15,8 +15,7 @@ var Queue = function() {
     newest++;
   };
 
-  someInstance.dequeue = function() {
-    
+  someInstance.dequeue = function() {    
     var val = storage[oldest];
     delete someInstance[storage[oldest]];
     oldest++;

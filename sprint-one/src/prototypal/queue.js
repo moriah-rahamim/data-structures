@@ -23,17 +23,28 @@ var Queue = function() {
 var queueMethods = {
   // add a new item to the back of the queue
   enqueue: function(item) {
-
+    this.storage[this.startPosition + this.count] = item;
+    this.count++;
   },
 
   // remove oldest item from the front of the queue, and return it
   dequeue: function() {
+    if (this.count > 0) {
+      let item = this.storage[this.startPosition];
+      delete this.storage[this.startPosition];
 
+      this.startPosition++;
+      this.count--;
+
+      return item;
+    } else {
+      return undefined;
+    }
   },
 
   // return the current size of the queue
   size: function() {
-    return 0;
+    return this.count;
   }
 };
 

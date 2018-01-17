@@ -18,17 +18,19 @@ var Stack = function() {
 var stackMethods = {
   // Add a new item onto a stack
   push: function(item) {
-
+    this.count++;
   },
 
   // Remove the top item from the stack, and return it
   pop: function() {
-
+    if (this.count > 0) {
+      this.count--;
+    }
   },
 
   // Return the size of the stack
   size: function() {
-
+    return this.count;
   }
 };
 

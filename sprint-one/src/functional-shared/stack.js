@@ -1,22 +1,24 @@
 var Stack = function() {
   var newStack = {};
+
+  extend(newStack, stackMethods);
   
 
 };
 
-var stackMethods = {
-  push: function() {
+var stackMethods = {};
 
-  },
-  pop: function() {
+Stack.stackMethods.push = function () {
 
-  },
-  size: function() {
-
-  }  
 };
 
+Stack.stackMethods.push = function () {
 
+};
+
+Stack.stackMethods.size = function () {
+
+};
 
 var extend = function(to, from) {
   for (var key in from) {

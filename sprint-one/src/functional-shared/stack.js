@@ -1,24 +1,28 @@
 var Stack = function() {
-  var someInstance = {};
-
-  var storage = {};
-  var count = 0;
+  var someInstance = {
+    count: 0,
+    storage: {}
+  };
 
   // assign all methods in stackMethods as methods of someInstance
-  Object.assign(someInstance, stackMethods);
+  _.extend(someInstance, stackMethods);
+
+  return someInstance;
 };
 
 var stackMethods = {
   push: function() {
-
+    this.count++;
   },
 
   pop: function() {
-
+    if (this.count > 0) {
+      this.count--;
+    }
   },
   
   size: function() {
-
+    return this.count;
   }
 };
 

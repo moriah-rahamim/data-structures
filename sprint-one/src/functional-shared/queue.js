@@ -11,15 +11,14 @@ var Queue = function() {
 };
 
 var queueMethods = {
-  enqueue: function (val) {
-    
+  enqueue: function (val) {    
     this.storage[this.newest] = val;
     this[this.storage[this.newest]] = this.storage;
     this.newest ++;
 
   },
   dequeue: function () {
-    var val = this[this.oldest];
+    var val = this.storage[this.oldest];
     delete this[this.storage[val]];
     this.oldest ++;
     return val;
@@ -27,7 +26,6 @@ var queueMethods = {
   },
   size: function () {
     return this.newest - this.oldest < 0 ? 0 : this.newest - this.oldest;
-
   }
 };
 

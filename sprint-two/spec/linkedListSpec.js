@@ -50,6 +50,15 @@ describe('linkedList', function() {
     linkedList.removeHead();
     expect(linkedList.contains(4)).to.equal(false);
   });
+  
+  it('should store more than 2 values', function() {
+    linkedList.addToTail(1);
+    linkedList.addToTail(2);
+    linkedList.addToTail(3);
+    expect(linkedList.head.head).to.equal(1);
+    expect(linkedList.head.tail).to.equal(3);
+    expect(linkedList.contains(2)).to.equal(true);
+  });
 
   // add more tests here to test the functionality of linkedList
 });

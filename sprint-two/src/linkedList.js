@@ -5,10 +5,27 @@ var LinkedList = function() {
 
   list.addToTail = function(value) {
     var node = Node(value);
+  
     if (list.head === null) {
+      // base case: nothing in list (head null, tail null)
+      // head = new node
+      // tail = the same new node
+      // new node .next is null
       list.head = node;
+      list.tail = node;
+    } else {
+      // regular case: stuff already in list
+      // old tail .next = new node
+      // set new node as tail
+      // new node .next points to null
+      var oldTail = list.tail;
+      oldTail.next = node;
+      list.tail = node;
     }
-    list.tail = node;
+    
+    
+    
+    
   };
 
   list.removeHead = function() {
@@ -19,6 +36,7 @@ var LinkedList = function() {
   };
 
   list.contains = function(target) {
+    return list.head.value === target || list.tail.value === target;
   };
 
   return list;

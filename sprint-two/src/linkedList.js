@@ -22,21 +22,38 @@ var LinkedList = function() {
       oldTail.next = node;
       list.tail = node;
     }
-    
-    
-    
-    
   };
 
   list.removeHead = function() {
     var head = list.head;
-    list.head = list.tail;
-    return head.value;
     
+    if (head === null) {
+      // if the list is already empty
+      return head;
+    } else if (head.next === null) {
+      // if this is the only item in the list
+      list.head = null;
+      list.tail = null;
+    } else {
+      list.head = head.next;
+    }
+    return head.value;
   };
 
   list.contains = function(target) {
-    return list.head.value === target || list.tail.value === target;
+    var node = list.head;
+
+    // while node is not null
+    while (node !== null) {
+      // check if this is the target
+      if (node.value === target) {
+        return true;
+      } else {
+        node = node.next;
+      }
+    }
+
+    return false;
   };
 
   return list;

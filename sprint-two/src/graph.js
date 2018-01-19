@@ -28,10 +28,14 @@ Graph.prototype.contains = function(value) {
 
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(value) {
+  //go through every edge in this nodes edges
+  //for each edge
+  //  remove this edge from the other's nodes edges object
+  for (var key in this[value].edges) {
+    delete this[key].edges[value];
+  }
   // remove the node from the graph
   delete this[value];
-
-  // eventually: remove edges
 };
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
@@ -45,16 +49,9 @@ Graph.prototype.hasEdge = function(fromNode, toNode) {
 Graph.prototype.addEdge = function(fromNode, toNode) {
   // check if graph contains both the fromNode and the toNode
   if (this.contains(fromNode) && this.contains(toNode)) {
-    // create an edge object
-    // should contain reference to both nodes that it connects (nondirectional)
-    var edge = {
-      from: fromNode,
-      to: toNode
-    };
-
-    // add it to each node's edges property
-    this[fromNode].edges[this[toNode].value] = edge;
-    this[toNode].edges[this[fromNode].value] = edge;
+    //set edge reference between both nodes(bi-directional)
+    this[fromNode].edges[this[toNode].value] = this[toNode].value;
+    this[toNode].edges[this[fromNode].value] = this[fromNode].value;
 
     // return true if successful
     return true;

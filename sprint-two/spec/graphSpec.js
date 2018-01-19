@@ -49,9 +49,17 @@ describe('graph', function() {
     graph.addNode(4);
     graph.addNode(5);
     graph.addEdge(5, 4);
+    graph.addNode(6);
+    graph.addNode(7);
+    graph.addEdge(6, 5);
+    graph.addEdge(7, 5);
+    expect(graph.hasEdge(6, 5)).to.equal(true);
+    expect(graph.hasEdge(7, 5)).to.equal(true);
     expect(graph.hasEdge(4, 5)).to.equal(true);
     graph.removeNode(5);
     expect(graph.hasEdge(4, 5)).to.equal(false);
+    expect(graph.hasEdge(6, 5)).to.equal(false);
+    expect(graph.hasEdge(7, 5)).to.equal(false);
   });
 
   it('should execute a callback on each node in the graph', function() {

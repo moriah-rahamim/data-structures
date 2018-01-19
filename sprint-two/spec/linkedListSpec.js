@@ -70,5 +70,18 @@ describe('linkedList', function() {
     expect(function() { linkedList.removeHead(); }).not.throws();
   });
 
-  // add more tests here to test the functionality of linkedList
+  it('should set head and tail to null when list becomes empty', function() {
+    linkedList.addToTail('thing one');
+    linkedList.addToTail('thing two');
+    linkedList.removeHead();
+    linkedList.removeHead();
+    expect(linkedList.head).to.equal(null);
+    expect(linkedList.tail).to.equal(null);
+  });
+
+  it('should have same head and tail when list contains one node', function() {
+    linkedList.addToTail('a thing');
+    expect(linkedList.head).to.equal(linkedList.tail);
+  });
+
 });

@@ -29,6 +29,10 @@ Graph.prototype.contains = function(value) {
 
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(value) {
+  //if graph does not contain value return false
+  if (!this.contains(value)) {
+    return false;
+  }
   //go through every edge in this nodes edges
   //for each edge
   //  remove this edge from the other's nodes edges object
@@ -37,6 +41,7 @@ Graph.prototype.removeNode = function(value) {
   }
   // remove the node from the graph
   delete this.nodes[value];
+  return true;
 };
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.

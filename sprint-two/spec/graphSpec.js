@@ -76,4 +76,11 @@ describe('graph', function() {
     expect(graph.hasEdge(3, 5)).to.equal(true);
     expect(graph.hasEdge(5, 5)).to.equal(true);
   });
+  // should not try to remove a node that does not exist
+  it ('should not try to remove a node that does not exist', function() {
+    graph.addNode(1);
+    graph.addNode(2);
+    expect(function() { graph.removeNode(4); }).not.throws();
+    expect(graph.removeNode(4)).to.equal(false);
+  });  
 });

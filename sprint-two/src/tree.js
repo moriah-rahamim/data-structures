@@ -11,12 +11,16 @@ var Tree = function(value) {
 var treeMethods = {};
 
 treeMethods.addChild = function(value) {
+  //if value is undefined/null return false;
+  if (value === undefined || value === null) {
+    return false;
+  }
   //create new tree with value
   //add newtree as a child of this
   var newTree = Tree(value);
   this.children.push(newTree);
   
-  
+  return true;
 };
 
 treeMethods.contains = function(target) {

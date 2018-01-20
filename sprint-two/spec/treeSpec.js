@@ -40,5 +40,12 @@ describe('tree', function() {
     expect(tree.contains(7)).to.equal(true);
     expect(tree.contains(8)).to.equal(true);
   });
+  
+  it('should return a boolean status whether addChild was successful', function() {
+    expect(tree.addChild(5)).to.equal(true);
+    expect(tree.addChild(null)).to.equal(false);
+    expect(tree.addChild()).to.equal(false);
+    expect(function() { tree.addChild(); } ).not.throws();
+  });
 
 });

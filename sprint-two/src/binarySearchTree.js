@@ -11,18 +11,22 @@ var BinarySearchTree = function(value) {
 
 var bstMethods = {
 
-  insert: function(value) {
-    // do nothing if value is equal to this node's value
-    if (this.value !== value) {
-      var side;
-      if (value > this.value) {
-        // if value is greater than the current node's value
-        side = 'right';
-      } else if (value < this.value) {
-        // if value is less than the current node's value
-        side = 'left';
-      }
+  getSide: function(value) {
+    if (value === this.value) {
+      return 'equal';
+    } else if (value > this.value) {
+      // if value is greater than the current node's value
+      return 'right';
+    } else {
+      // if value is less than the current node's value
+      return 'left';
+    }
+  },
 
+  insert: function(value) {
+    var side = this.getSide(value);
+    // do nothing if value is equal to this node's value
+    if (side !== 'equal') {
       // check if this node has a child on that side
       if (this[side] === null) {
         // if no - add this new value as a child on that side
@@ -36,7 +40,20 @@ var bstMethods = {
   },
 
   contains: function(value) {
+    var side = this.getSide(value);
+    // BASE CASES:
+    // if current node = value
+    if (side === 'equal') {
+      return true;
+    }
+    // if the child on that side is null
+    if (this[side] === null) {
+      return false;
+    }
 
+    // RECURSIVE CASE:
+    // recurse whatever side we have set
+    return this[side].contains(value);
   },
 
   depthFirstLog: function(callback) {

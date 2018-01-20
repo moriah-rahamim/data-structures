@@ -24,6 +24,10 @@ var bstMethods = {
   },
 
   insert: function(value) {
+    //if try to insert non-number return false
+    if (typeof(value) !== 'number') {
+      return false;
+    }
     var side = this.getSide(value);
     // do nothing if value is equal to this node's value
     if (side !== 'equal') {
@@ -37,9 +41,15 @@ var bstMethods = {
         this[side].insert(value);
       }
     }
+    //return true if successfully inserted
+    return true;
   },
 
   contains: function(value) {
+    //if value is not type of number return false
+    if (typeof(value) !== 'number') {
+      return false;
+    }
     var side = this.getSide(value);
     // BASE CASES:
     // if current node = value

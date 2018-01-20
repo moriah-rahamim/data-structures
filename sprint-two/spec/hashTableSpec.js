@@ -47,6 +47,15 @@ describe('hashTable', function() {
     window.getIndexBelowMaxForKey = oldHashFunction;
   });
 
+  it('should stringify keys on insert', function() {
+    hashTable.insert(1, 'one');
+    expect(hashTable.retrieve('1')).to.equal('one');
+  });
+
+  it('should stringify keys on retrieve', function() {
+    hashTable.insert('1', 'one');
+    expect(hashTable.retrieve(1)).to.equal('one');
+  });
   // (Advanced! Remove the extra "x" when you want the following tests to run)
   xit ('should double in size when needed', function() {
     _.each(people, function(person) {

@@ -7,6 +7,8 @@ var HashTable = function() {
 
 //get(index), set(index, val), each - callback(storage[i], i, storage);
 HashTable.prototype.insert = function(k, v) {
+  //stringify key before inserting
+  k = k.toString();
   var index = getIndexBelowMaxForKey(k, this._limit);
   //go to the bucket at the index (bucket number)
   if (this._storage[index] === undefined) {
@@ -25,6 +27,8 @@ HashTable.prototype.insert = function(k, v) {
 };
 
 HashTable.prototype.retrieve = function(k) {
+  //stringify key before retrieving
+  k = k.toString();
   var index = getIndexBelowMaxForKey(k, this._limit);
   //use index to go to bucket, search until we find key
   var bucket = this._storage[index];
